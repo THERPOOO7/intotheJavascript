@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script> type="text/javascript" 
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("tyYE91XMls2ovW3Qv");
+        })();
+    </script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="contact-form">
+   <h5>Need help? Contact us</h5>
+   <form id="contact-form" class="custom-form" action="#">
+      <div class="controls">
+         <div class="form-group">
+            <input id="form_name" type="text" name="name" class="form-control" placeholder="Your Name *" required="required" data-error="Name is required.">
+         </div>
+         <div class="form-group">
+            <input id="form_email" type="email" name="email" class="form-control" placeholder="Your Mail *" required="required" data-error="Valid email is required.">
+         </div>
+         <div class="form-group">
+            <textarea id="form_message" name="message" class="form-control" placeholder="Your Message*" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+         </div>
+         <input type="submit" onclick="sendEmail();" class="submit-btn home-3" value="Submit Request">
+      </div>
+   </form>
+</div>
+
+<script>
+    
+function sendEmail(){
+      let params = {
+         name: name = ocument.getElementById("form_name").value,
+         email: email_id = document.getElementById("form_email").value,
+         message: message = document.getElementById("form_message").value,
+
+      };
+
+      emailjs.send('service_dwtg853', 'template_9db87af', params)
+         .then(function(response) {
+            alert('Email sent successfully.');
+            window.location.href = "https://prionde.co";
+         })
+         .catch(function(error) {
+            console.log('Error:', error);
+            alert('Failed to send email.');
+         });
+        }
+</script>
+
+
+</body>
+</html>

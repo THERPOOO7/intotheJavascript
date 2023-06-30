@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="contact-form">
+        <h5>Need help? Contact us</h5>
+        <form id="contact-form" class="custom-form" action="#">
+           <div class="controls">
+              <div class="form-group">
+                 <input id="form_name" type="text" name="name" class="form-control" placeholder="Your Name *" required="required" data-error="Name is required.">
+              </div>
+              <div class="form-group">
+                 <input id="form_email" type="email" name="email" class="form-control" placeholder="Your Mail *" required="required" data-error="Valid email is required.">
+              </div>
+              <div class="form-group">
+                <input id="form_contact_number" type="text" name="contact_number" class="form-control" placeholder="Your Contact Number *" required="required" data-error="Contact number is required.">
+             </div>
+              <div class="form-group">
+                 <textarea id="form_message" name="message" class="form-control" placeholder="Your Message*" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+              </div>
+              <input type="submit" onclick="sendEmail()" class="submit-btn home-3" value="Submit Request">
+           </div>
+        </form>
+     </div>
+     
+     <script>
+        function sendEmail() {
+           event.preventDefault(); 
+     
+           let name = document.getElementById("form_name").value;
+           let email = document.getElementById("form_email").value;
+           let contactNumber = document.getElementById("form_contact_number").value;
+           let message = document.getElementById("form_message").value;
+     
+           let body = "You got message from" + [name] + "PRIONDE.COM"+ "" + "<br><br>";
+           body += "<strong>Name:</strong> <b>" + name + "</b><br>" ;
+           body += "Email: " + email + "" + "<br>";
+           body += "Contact Number: " + contactNumber + "<br>";
+           body += "Message: " + message +"" + "<br>";
+     
+           Email.send({
+              SecureToken: "11bcc0ae-1686-404e-8316-cd1bba4f16e8",
+              To: "patelrudra6501@gmail.com",
+              Cc: "rudra.patel@metizsoft.com",
+              Bcc: "rudra.patel@metizsoft.com",
+              From:' rudra.patel@metizsoft.com',
+              Subject: "Message from POD solutions!",
+              Body: body
+           }).then(function(response) {
+              window.location.href = "https://prionde.co";
+           }).catch(function(error) {
+              console.log('Error:', error);
+              alert('Failed to send email.');
+           });
+        }
+     </script>
+     
+     <script src="https://smtpjs.com/v3/smtp.js"></script>
+     
+</body>
+</html>
